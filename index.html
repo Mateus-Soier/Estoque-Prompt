@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Estoque</title>
+    <script>
+
+        var x = 0
+        var z = 0
+        var produto = [{
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }, {
+            nome: "",
+            quantidade: 0,
+            valor: 0
+        }]
+
+
+        function escolha() {
+            var escolha = prompt("Bem Vindo ao menu do seu Estoque\r\nDigite o numero relacionado ao que deseja fazer\r\n1 - Incluir Produto\r\n2 - Vender Produto\r\n3 - Atualizar Estoque\r\n4 - Pesquisar Produto\r\n5 - Sair do sistema")
+            switch (escolha) {
+                case '1':
+                    add()
+                    break;
+                case '2':
+                    vend()
+                    break;
+                case '3':
+                    Atualizar()
+                    break;
+                case '4':
+                    Pesq()
+                    break;
+                case '5':
+                    alert("Obrigado por usar o Sistema S2.\rAte Logo!!!")
+
+                    break;
+                default:
+                    stop()
+
+            }
+        }
+
+
+
+        function add() {
+
+            for (z = 0; z != 1; z++) {
+                produto[x].nome = (prompt("Digite o nome do produto"))
+                produto[x].quantidade = (parseInt(prompt("Digite a quantidade de produtos disponiveis")))
+                produto[x].valor = (parseInt(prompt("Digite o preco do produto")))
+                z = parseInt(prompt("Voce deseja adicionar mais um produto? \r 0 - Não \r 1 - Sim"))
+                x++
+                if (z == 0) [
+                    escolha()
+                ]
+            }
+        }
+
+        function vend() {
+
+            prod_n = prompt("Digite o nome do produto que deseje vender:")
+            prod_q = prompt("Digite a quantidade que deseja vender:")
+
+            pp = produto.map(nome => nome.nome == prod_n)
+            index = pp.indexOf(true)
+
+            if (index == -1) {
+                alert("Produto não cadastrado")
+                escolha()
+            }
+
+            if (produto[index].quantidade < 0) {
+                alert("Estoque insuficiente")
+                escolha()
+            }
+            else {
+                produto[index].quantidade -= prod_q
+                alert("Sobraram " + produto[index].quantidade)
+                escolha()
+            }
+
+        }
+
+        function Atualizar() {
+            prod_n2 = prompt("Digite o nome do produto que deseje atualizar:")
+            prod_q2 = parseInt(prompt("Digite a quantidade que deseja inserir:"))
+
+            pp2 = produto.map(nome => nome.nome == prod_n2)
+            index2 = pp2.indexOf(true)
+
+            if (index2 == -1) {
+                alert("Produto não cadastrado")
+                escolha()
+            } else {
+                produto[index2].quantidade += prod_q2
+                alert("Agora o produto possui " + produto[index2].quantidade + " unidades")
+                escolha()
+            }
+
+        }
+
+        function Pesq() {
+            prod_n3 = prompt("Digite o nome do produto que deseje atualizar:")
+
+            pp3 = produto.map(nome => nome.nome == prod_n3)
+            index3 = pp3.indexOf(true)
+
+            if (index3 == -1) {
+                alert("Produto não cadastrado")
+                escolha()
+            } else {
+                alert("Produto: " + produto[index3].nome + "\rQuantidade: " + produto[index3].quantidade + "\rPreco: " + produto[index3].valor)
+                escolha()
+            }
+        }
+
+
+        function stop() {
+            alert("Opção Inválida");
+            escolha()
+        }
+
+
+        escolha()
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
